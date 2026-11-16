@@ -1,0 +1,47 @@
+name: backend
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: mini_auto_care
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DB_URL: jdbc:postgresql://localhost:5432/mini_auto_care
+      DB_USER: postgres
+      DB_PASSWORD: password
+      JWT_SECRET: dGhpcyBpcyBhIHZlcnkgc2VjdXJlIGRlbW8gand0IHNlY3JldCBrZXkgZm9yIGNp
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+
+      - name: Build and Verify with Maven
+        working-directory: backend
+        run: mvn -B verify
