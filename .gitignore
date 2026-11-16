@@ -1,0 +1,25 @@
+# Backend (Maven / Java / Spring Boot)
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.class
+*.log
+*.jar
+*.war
+
+# Frontend (Node / Vite)
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# IDEs & OS
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
