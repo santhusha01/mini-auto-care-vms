@@ -1,7 +1,7 @@
 CREATE TABLE customers (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
+    phone VARCHAR(20) NOT NULL UNIQUE,
     email VARCHAR(100),
     address TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

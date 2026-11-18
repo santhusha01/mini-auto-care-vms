@@ -7,4 +7,7 @@ import java.util.List;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
     List<Customer> findByNameContainingIgnoreCaseOrPhoneContaining(String name, String phone);
+    
+    
+    boolean existsByPhone(String phone);
 }
