@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ModulePlaceholder from './pages/ModulePlaceholder';
 import ServicesPage from './pages/ServicesPage';
+import CustomersPage from './pages/CustomersPage';
 
 export default function App() {
   return (
@@ -24,7 +25,7 @@ export default function App() {
           >
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="customers/*" element={<ModulePlaceholder title="Customers" owner="Dev 2" />} />
+            <Route path="customers/*" element={<CustomersPage />} />
             <Route path="job-cards/*" element={<ModulePlaceholder title="Job Cards" owner="Dev 2" />} />
             <Route path="inventory/*" element={<ModulePlaceholder title="Inventory" owner="Dev 3" />} />
             <Route path="services/*" element={<ServicesPage />} />
